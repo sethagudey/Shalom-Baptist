@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
   <title>Soul Won</title>
 
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style.css"/>
 
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
@@ -23,146 +23,154 @@
       <h1>Soul Won</h1>
 
       <p class="subtitle">
-        Record souls reached during evangelism for follow-up and support.
+        Record souls reached during evangelism.
       </p>
 
-  <div class="form-group">
-    <input
-      type="text"
-      name="fullName"
-      placeholder="Full Name"
-      required
-    />
-  </div>
+      <form id="soulForm">
 
-  <div class="form-group">
-    <input
-      type="tel"
-      name="phone"
-      placeholder="Phone Number"
-    />
-  </div>
+        <div class="form-group">
+          <input
+            type="text"
+            name="fullName"
+            placeholder="Full Name"
+            required
+          />
+        </div>
 
-  <div class="form-group">
-    <input
-      type="text"
-      name="locationMet"
-      placeholder="Location Met"
-      required
-    />
-  </div>
+        <div class="form-group">
+          <input
+            type="tel"
+            name="phone"
+            placeholder="Phone Number"
+          />
+        </div>
 
-  <div class="form-group">
-    <select name="gender" required>
-      <option value="">Select Gender</option>
-      <option>Male</option>
-      <option>Female</option>
-    </select>
-  </div>
+        <div class="form-group">
+          <input
+            type="text"
+            name="locationMet"
+            placeholder="Location Met"
+            required
+          />
+        </div>
 
-  <div class="form-group">
-    <select name="ageRange" required>
-      <option value="">Select Age Range</option>
-      <option>Under 18</option>
-      <option>18 - 25</option>
-      <option>26 - 35</option>
-      <option>36 - 50</option>
-      <option>50+</option>
-    </select>
-  </div>
+        <div class="form-group">
+          <select name="gender" required>
+            <option value="">Select Gender</option>
+            <option>Male</option>
+            <option>Female</option>
+          </select>
+        </div>
 
-  <div class="form-group">
-    <select name="decisionMade" required>
-      <option value="">Decision Made</option>
-      <option>Accepted Christ</option>
-      <option>Rededicated Life</option>
-      <option>Requested Prayer</option>
-    </select>
-  </div>
+        <div class="form-group">
+          <select name="ageRange" required>
+            <option value="">Select Age Range</option>
+            <option>Under 18</option>
+            <option>18 - 25</option>
+            <option>26 - 35</option>
+            <option>36 - 50</option>
+            <option>50+</option>
+          </select>
+        </div>
 
-  <div class="form-group">
-    <select name="followUp" required>
-      <option value="">Needs Follow Up?</option>
-      <option>Yes</option>
-      <option>No</option>
-    </select>
-  </div>
+        <div class="form-group">
+          <select name="decisionMade" required>
+            <option value="">Decision Made</option>
+            <option>Accepted Christ</option>
+            <option>Rededicated Life</option>
+            <option>Requested Prayer</option>
+          </select>
+        </div>
 
-  <div class="form-group">
-    <input
-      type="text"
-      name="soulWinner"
-      placeholder="Soul Winner Name"
-      required
-    />
-  </div>
+        <div class="form-group">
+          <select name="followUp" required>
+            <option value="">Needs Follow Up?</option>
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </div>
 
-  <div class="form-group">
-    <textarea
-      name="notes"
-      placeholder="Notes"
-      rows="4"
-    ></textarea>
-  </div>
+        <div class="form-group">
+          <input
+            type="text"
+            name="soulWinner"
+            placeholder="Soul Winner Name"
+            required
+          />
+        </div>
 
-  <button type="submit" class="submit-btn">
-    Save Soul
-  </button>
+        <div class="form-group">
+          <textarea
+            name="notes"
+            placeholder="Notes"
+          ></textarea>
+        </div>
 
-</form>
+        <button type="submit" class="submit-btn">
+          Save Soul
+        </button>
+
+      </form>
 
     </div>
 
   </div>
 
-<script>
+  <script>
 
-const scriptURL = "https://script.google.com/macros/s/AKfycby_2ZE2QAvET0IisTivTSOlctYFSthi-xSe98Mjjz66hiASaiG5iJWoSbt6cfTe9gZ2/exec";
+    const scriptURL = "https://script.google.com/macros/s/AKfycby_2ZE2QAvET0IisTivTSOlctYFSthi-xSe98Mjjz66hiASaiG5iJWoSbt6cfTe9gZ2/exec";
 
-const soulForm = document.getElementById("soulForm");
+    const soulForm = document.getElementById("soulForm");
 
-soulForm.addEventListener("submit", async (e) => {
+    soulForm.addEventListener("submit", async function(e) {
 
-  e.preventDefault();
+      e.preventDefault();
 
-  const submitBtn = soulForm.querySelector("button");
+      const submitBtn = soulForm.querySelector("button");
 
-  submitBtn.innerText = "Saving...";
-  submitBtn.disabled = true;
+      submitBtn.innerText = "Saving...";
+      submitBtn.disabled = true;
 
-  const formData = new FormData(soulForm);
+      const formData = new FormData(soulForm);
 
-  const data = Object.fromEntries(formData.entries());
+      const data = Object.fromEntries(formData.entries());
 
-  try {
+      try {
 
-   await fetch(`${scriptURL}?sheet=soul`, {
+        const response = await fetch(`${scriptURL}?sheet=soul`, {
 
-  method: "POST",
+          method: "POST",
 
-  headers: {
-    "Content-Type": "application/json"
-  },
+          headers: {
+            "Content-Type": "application/json"
+          },
 
-  body: JSON.stringify(data)
+          body: JSON.stringify(data)
 
-});
+        });
 
-    window.location.href = "success.html";
+        const result = await response.text();
 
-  }
+        console.log(result);
 
-  catch (error) {
+        window.location.href = "success.html";
 
-    alert("Something went wrong.");
+      }
 
-    submitBtn.innerText = "Save Soul";
-    submitBtn.disabled = false;
+      catch(error) {
 
-  }
+        console.error(error);
 
-});
+        alert("Submission failed.");
 
-</script>
+        submitBtn.innerText = "Save Soul";
+        submitBtn.disabled = false;
+
+      }
+
+    });
+
+  </script>
+
 </body>
 </html>
