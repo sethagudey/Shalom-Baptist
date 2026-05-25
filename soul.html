@@ -64,11 +64,11 @@
               Gender
             </option>
 
-            <option value="Male">
+            <option>
               Male
             </option>
 
-            <option value="Female">
+            <option>
               Female
             </option>
           </select>
@@ -102,7 +102,6 @@
             <option>
               50+
             </option>
-
           </select>
         </div>
 
@@ -135,7 +134,6 @@
             <option>
               Requested Prayer
             </option>
-
           </select>
         </div>
 
@@ -154,7 +152,6 @@
             <option>
               No
             </option>
-
           </select>
         </div>
 
@@ -188,69 +185,81 @@
 
   <script>
 
-  const scriptURL =
-    "https://script.google.com/macros/s/AKfycby4X1UhQJHXt7qZD793l19qpG_ZI-A_gVEqgYTv3MgjXevPUIVOrDNpXokNH173DnAb/exec";
+    const scriptURL =
+      "https://script.google.com/macros/s/AKfycby4X1UhQJHXt7qZD793l19qpG_ZI-A_gVEqgYTv3MgjXevPUIVOrDNpXokNH173DnAb/exec";
 
-  const form =
-    document.getElementById(
-      "soulForm"
-    );
+    const form =
+      document.getElementById(
+        "soulForm"
+      );
 
-  form.addEventListener(
-    "submit",
-    async function(e){
+    form.addEventListener(
+      "submit",
+      async function(e){
 
-      e.preventDefault();
+        e.preventDefault();
 
-      const button =
-        document.querySelector(
-          ".submit-btn"
-        );
-
-      button.innerText =
-        "Saving...";
-
-      button.disabled = true;
-
-      const formData =
-        new FormData(form);
-
-      const data =
-        Object.fromEntries(
-          formData.entries()
-        );
-
-      try {
-
-        const response =
-          await fetch(
-            scriptURL,
-            {
-              method: "POST",
-
-              headers: {
-                "Content-Type":
-                  "application/json"
-              },
-
-              body:
-                JSON.stringify(data)
-            }
+        const button =
+          document.querySelector(
+            ".submit-btn"
           );
 
-        const result =
-          await response.json();
+        button.innerText =
+          "Saving...";
 
-        console.log(result);
+        button.disabled = true;
 
-        if(result.success){
+        const formData =
+          new FormData(form);
 
-          window.location.href =
-            "success.html";
+        const data =
+          Object.fromEntries(
+            formData.entries()
+          );
+
+        try {
+
+          const response =
+            await fetch(
+              scriptURL,
+              {
+                method: "POST",
+
+                headers: {
+                  "Content-Type":
+                    "application/json"
+                },
+
+                body:
+                  JSON.stringify(data)
+              }
+            );
+
+          const result =
+            await response.json();
+
+          console.log(result);
+
+          if(result.success){
+
+            window.location.href =
+              "success.html";
+
+          }
+
+          else {
+
+            alert(
+              "Submission failed"
+            );
+
+          }
 
         }
 
-        else {
+        catch(error){
+
+          console.error(error);
 
           alert(
             "Submission failed"
@@ -258,27 +267,15 @@
 
         }
 
-      }
+        button.innerText =
+          "Save Soul";
 
-      catch(error){
-
-        console.error(error);
-
-        alert(
-          "Submission failed"
-        );
+        button.disabled = false;
 
       }
+    );
 
-      button.innerText =
-        "Save Soul";
-
-      button.disabled = false;
-
-    }
-  );
-
-</script>
+  </script>
 
 </body>
 
