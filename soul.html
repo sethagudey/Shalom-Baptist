@@ -188,84 +188,69 @@
 
   <script>
 
-    const scriptURL =
-      "https://script.google.com/macros/s/AKfycby2aoXLSRc-4AvtxsOXFPs8VNMa8uypIVaox1AYtVoObaWy14m9k1-ew3HOUo1r_js8/exec";
+  const scriptURL =
+    "https://script.google.com/macros/s/AKfycby4X1UhQJHXt7qZD793l19qpG_ZI-A_gVEqgYTv3MgjXevPUIVOrDNpXokNH173DnAb/exec";
 
-    const form =
-      document.getElementById(
-        "soulForm"
-      );
+  const form =
+    document.getElementById(
+      "soulForm"
+    );
 
-    form.addEventListener(
-      "submit",
-      async function(e){
+  form.addEventListener(
+    "submit",
+    async function(e){
 
-        e.preventDefault();
+      e.preventDefault();
 
-        const button =
-          document.querySelector(
-            ".submit-btn"
+      const button =
+        document.querySelector(
+          ".submit-btn"
+        );
+
+      button.innerText =
+        "Saving...";
+
+      button.disabled = true;
+
+      const formData =
+        new FormData(form);
+
+      const data =
+        Object.fromEntries(
+          formData.entries()
+        );
+
+      try {
+
+        const response =
+          await fetch(
+            scriptURL,
+            {
+              method: "POST",
+
+              headers: {
+                "Content-Type":
+                  "application/json"
+              },
+
+              body:
+                JSON.stringify(data)
+            }
           );
 
-        button.innerText =
-          "Saving...";
+        const result =
+          await response.json();
 
-        button.disabled = true;
+        console.log(result);
 
-        const formData =
-          new FormData(form);
+        if(result.success){
 
-        const data =
-          Object.fromEntries(
-            formData.entries()
-          );
-
-        data.sheetType =
-          "soul";
-
-        try {
-
-          const response =
-            await fetch(
-              scriptURL,
-              {
-                method: "POST",
-
-                headers: {
-                  "Content-Type":
-                    "application/json"
-                },
-
-                body:
-                  JSON.stringify(data)
-              }
-            );
-
-          const result =
-            await response.json();
-
-          console.log(result);
-
-          if(result.success){
-
-            window.location.href =
-              "success.html";
-
-          }
-
-          else {
-
-            alert(
-              "Submission failed"
-            );
-
-          }
+          window.location.href =
+            "success.html";
 
         }
 
-        catch(error){
-
-          console.error(error);
+        else {
 
           alert(
             "Submission failed"
@@ -273,15 +258,27 @@
 
         }
 
-        button.innerText =
-          "Save Soul";
+      }
 
-        button.disabled = false;
+      catch(error){
+
+        console.error(error);
+
+        alert(
+          "Submission failed"
+        );
 
       }
-    );
 
-  </script>
+      button.innerText =
+        "Save Soul";
+
+      button.disabled = false;
+
+    }
+  );
+
+</script>
 
 </body>
 
