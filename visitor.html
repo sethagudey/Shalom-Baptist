@@ -117,43 +117,66 @@
 
 const scriptURL = "https://script.google.com/macros/s/AKfycby_2ZE2QAvET0IisTivTSOlctYFSthi-xSe98Mjjz66hiASaiG5iJWoSbt6cfTe9gZ2/exec";
 
-const visitorForm = document.getElementById("visitorForm");
+const form =
+  document.getElementById("visitorForm");
 
-visitorForm.addEventListener("submit", async (e) => {
+form.addEventListener("submit", async function(e) {
 
   e.preventDefault();
 
-  const submitBtn = visitorForm.querySelector("button");
+  const button =
+    document.querySelector(".submit-btn");
 
-  submitBtn.innerText = "Submitting...";
-  submitBtn.disabled = true;
+  button.innerText = "Submitting...";
 
-  const formData = new FormData(visitorForm);
+  const formData = new FormData(form);
 
-  const data = Object.fromEntries(formData.entries());
+  const data =
+    Object.fromEntries(formData.entries());
 
   try {
 
-    await fetch(`${scriptURL}?sheet=visitor`, {
+    const response = await fetch(
+      scriptURL + "?sheet=visitor",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type":
+            "application/json"
+        },
+        body: JSON.stringify(data)
+      }
+    );
 
-      method: "POST",
+    const result = await response.json();
 
-      body: JSON.stringify(data)
+    console.log(result);
 
-    });
+    if(result.success){
 
-    window.location.href = "success.html";
+      window.location.href =
+        "success.html";
+
+    }
+
+    else {
+
+      alert(result.error);
+
+    }
 
   }
 
-  catch (error) {
+  catch(error){
 
-    alert("Something went wrong.");
+    console.error(error);
 
-    submitBtn.innerText = "Submit Information";
-    submitBtn.disabled = false;
+    alert("Submission failed");
 
   }
+
+  button.innerText =
+    "Submit Information";
 
 });
 
