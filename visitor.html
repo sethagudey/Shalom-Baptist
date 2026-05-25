@@ -225,6 +225,8 @@
         button.innerText =
           "Submitting...";
 
+        button.disabled = true;
+
         const formData =
           new FormData(form);
 
@@ -233,6 +235,9 @@
             formData.entries()
           );
 
+        data.sheetType =
+          "visitor";
+
         try {
 
           const response =
@@ -240,6 +245,12 @@
               scriptURL,
               {
                 method: "POST",
+
+                headers: {
+                  "Content-Type":
+                    "application/json"
+                },
+
                 body:
                   JSON.stringify(data)
               }
@@ -279,6 +290,8 @@
 
         button.innerText =
           "Submit Information";
+
+        button.disabled = false;
 
       }
     );
