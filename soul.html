@@ -93,59 +93,85 @@
     </div>
 
   </div>
+<script>
 
-  <script>
+const soulScriptURL =
+  "https://script.google.com/macros/s/AKfycby_2ZE2QAvET0IisTivTSOlctYFSthi-xSe98Mjjz66hiASaiG5iJWoSbt6cfTe9gZ2/exec";
 
-    const scriptURL = "https://script.google.com/macros/s/AKfycby_2ZE2QAvET0IisTivTSOlctYFSthi-xSe98Mjjz66hiASaiG5iJWoSbt6cfTe9gZ2/exec
-";
+const soulForm =
+  document.getElementById("soulForm");
 
-    document
-      .getElementById("soulForm")
-      .addEventListener("submit", async function(e) {
+soulForm.addEventListener(
+  "submit",
+  async function(e) {
 
-        e.preventDefault();
+    e.preventDefault();
 
-        const button = document.querySelector(".submit-btn");
+    const button =
+      document.querySelector(".submit-btn");
 
-        button.innerText = "Saving...";
-        button.disabled = true;
+    button.innerText = "Saving...";
 
-        const formData = new FormData(this);
+    const formData =
+      new FormData(soulForm);
 
-        const data = Object.fromEntries(formData.entries());
+    const data =
+      Object.fromEntries(
+        formData.entries()
+      );
 
-        try {
+    try {
 
-          await fetch(scriptURL + "?sheet=soul", {
+      const response = await fetch(
+        soulScriptURL + "?sheet=soul",
+        {
+          method: "POST",
 
-            method: "POST",
+          headers: {
+            "Content-Type":
+              "application/json"
+          },
 
-            headers: {
-              "Content-Type": "application/json"
-            },
-
-            body: JSON.stringify(data)
-
-          });
-
-          window.location.href = "success.html";
-
+          body:
+            JSON.stringify(data)
         }
+      );
 
-        catch(error) {
+      const result =
+        await response.json();
 
-          console.error(error);
+      console.log(result);
 
-          alert("Submission failed");
+      if(result.success){
 
-          button.innerText = "Save Soul";
-          button.disabled = false;
+        window.location.href =
+          "success.html";
 
-        }
+      }
 
-      });
+      else {
 
-  </script>
+        alert(result.error);
+
+      }
+
+    }
+
+    catch(error){
+
+      console.error(error);
+
+      alert("Submission failed");
+
+    }
+
+    button.innerText =
+      "Save Soul";
+
+  }
+);
+
+</script>
 
 </body>
 </html>
