@@ -182,3 +182,40 @@ textarea{
   }
 
 }
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.main-btn,
+.secondary-btn {
+  width: 100%;
+  padding: 18px;
+  border-radius: 14px;
+  text-decoration: none;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.main-btn {
+  background: #7c3aed;
+  color: white;
+}
+
+.main-btn:hover {
+  transform: translateY(-2px);
+}
+
+.secondary-btn {
+  background: rgba(255,255,255,0.08);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+.secondary-btn:hover {
+  background: rgba(255,255,255,0.12);
+}
