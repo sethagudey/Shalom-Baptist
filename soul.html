@@ -10,7 +10,7 @@
     content="width=device-width, initial-scale=1.0"
   >
 
-  <title>Soul Won</title>
+  <title>Souls Won</title>
 
   <link
     rel="stylesheet"
@@ -30,7 +30,7 @@
 
     <div class="glass-card form-card">
 
-      <h1>Soul Won</h1>
+      <h1>Souls Won</h1>
 
       <p class="subtitle">
         Record souls reached during evangelism.
@@ -64,11 +64,11 @@
               Gender
             </option>
 
-            <option>
+            <option value="Male">
               Male
             </option>
 
-            <option>
+            <option value="Female">
               Female
             </option>
           </select>
@@ -102,6 +102,7 @@
             <option>
               50+
             </option>
+
           </select>
         </div>
 
@@ -134,6 +135,7 @@
             <option>
               Requested Prayer
             </option>
+
           </select>
         </div>
 
@@ -152,6 +154,7 @@
             <option>
               No
             </option>
+
           </select>
         </div>
 
@@ -207,8 +210,6 @@
         button.innerText =
           "Saving...";
 
-        button.disabled = true;
-
         const formData =
           new FormData(form);
 
@@ -225,11 +226,6 @@
               {
                 method: "POST",
 
-                headers: {
-                  "Content-Type":
-                    "application/json"
-                },
-
                 body:
                   JSON.stringify(data)
               }
@@ -238,7 +234,7 @@
           const result =
             await response.json();
 
-          console.log(result);
+            console.log(result);
 
           if(result.success){
 
@@ -269,8 +265,6 @@
 
         button.innerText =
           "Save Soul";
-
-        button.disabled = false;
 
       }
     );
