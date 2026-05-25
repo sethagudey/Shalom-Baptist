@@ -154,6 +154,7 @@
             <option>
               No
             </option>
+
           </select>
         </div>
 
@@ -209,6 +210,8 @@
         button.innerText =
           "Saving...";
 
+        button.disabled = true;
+
         const formData =
           new FormData(form);
 
@@ -217,14 +220,22 @@
             formData.entries()
           );
 
+        data.sheetType =
+          "soul";
+
         try {
 
           const response =
             await fetch(
-              scriptURL +
-              "?sheet=soul",
+              scriptURL,
               {
                 method: "POST",
+
+                headers: {
+                  "Content-Type":
+                    "application/json"
+                },
+
                 body:
                   JSON.stringify(data)
               }
@@ -264,6 +275,8 @@
 
         button.innerText =
           "Save Soul";
+
+        button.disabled = false;
 
       }
     );
