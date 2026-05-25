@@ -1,17 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>First Time Visitor</title>
 
-  <link rel="stylesheet" href="css/style.css" />
+  <link
+    rel="stylesheet"
+    href="css/style.css"
+  >
 
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
     rel="stylesheet"
-  />
+  >
+
 </head>
 
 <body>
@@ -23,163 +33,258 @@
       <h1>First Time Visitor</h1>
 
       <p class="subtitle">
-        Kindly fill this form so we can stay connected with you.
+        Help us connect with you better.
       </p>
+
       <form id="visitorForm">
 
-  <div class="form-group">
-    <input
-      type="text"
-      name="fullName"
-      placeholder="Full Name"
-      required
-    />
-  </div>
+        <div class="form-group">
+          <input
+            type="text"
+            name="fullName"
+            placeholder="Full Name"
+            required
+          >
+        </div>
 
-  <div class="form-group">
-    <input
-      type="tel"
-      name="phone"
-      placeholder="Phone Number"
-      required
-    />
-  </div>
+        <div class="form-group">
+          <input
+            type="text"
+            name="phone"
+            placeholder="Phone Number"
+            required
+          >
+        </div>
 
-  <div class="form-group">
-    <input
-      type="email"
-      name="email"
-      placeholder="Email Address"
-    />
-  </div>
+        <div class="form-group">
+          <select
+            name="gender"
+            required
+          >
+            <option value="">
+              Gender
+            </option>
 
-  <div class="form-group">
-    <select name="gender" required>
-      <option value="">Select Gender</option>
-      <option>Male</option>
-      <option>Female</option>
-    </select>
-  </div>
+            <option value="Male">
+              Male
+            </option>
 
-  <div class="form-group">
-    <select name="ageRange" required>
-      <option value="">Select Age Range</option>
-      <option>Under 18</option>
-      <option>18 - 25</option>
-      <option>26 - 35</option>
-      <option>36 - 50</option>
-      <option>50+</option>
-    </select>
-  </div>
+            <option value="Female">
+              Female
+            </option>
+          </select>
+        </div>
 
-  <div class="form-group">
-    <input
-      type="text"
-      name="area"
-      placeholder="Area / Address"
-    />
-  </div>
+        <div class="form-group">
+          <select
+            name="ageRange"
+            required
+          >
+            <option value="">
+              Age Range
+            </option>
 
-  <div class="form-group">
-    <input
-      type="text"
-      name="invitedBy"
-      placeholder="Invited By"
-    />
-  </div>
+            <option>
+              Under 18
+            </option>
 
-  <div class="form-group">
-    <textarea
-      name="prayerRequest"
-      placeholder="Prayer Request"
-      rows="4"
-    ></textarea>
-  </div>
+            <option>
+              18 - 25
+            </option>
 
-  <div class="form-group">
-    <select name="firstTime" required>
-      <option value="">Is this your first time today?</option>
-      <option>Yes</option>
-      <option>No</option>
-    </select>
-  </div>
+            <option>
+              26 - 35
+            </option>
 
-  <button type="submit" class="submit-btn">
-    Submit Information
-  </button>
+            <option>
+              36 - 50
+            </option>
 
-</form>
+            <option>
+              50+
+            </option>
+
+          </select>
+        </div>
+
+        <div class="form-group">
+          <input
+            type="text"
+            name="area"
+            placeholder="Residential Area"
+          >
+        </div>
+
+        <div class="form-group">
+          <input
+            type="text"
+            name="occupation"
+            placeholder="Occupation"
+          >
+        </div>
+
+        <div class="form-group">
+          <select
+            name="maritalStatus"
+          >
+            <option value="">
+              Marital Status
+            </option>
+
+            <option>
+              Single
+            </option>
+
+            <option>
+              Married
+            </option>
+
+            <option>
+              Divorced
+            </option>
+
+            <option>
+              Widowed
+            </option>
+
+          </select>
+        </div>
+
+        <div class="form-group">
+          <input
+            type="text"
+            name="invitedBy"
+            placeholder="Invited By"
+          >
+        </div>
+
+        <div class="form-group">
+          <select
+            name="joiningInterest"
+          >
+            <option value="">
+              Interested In Joining?
+            </option>
+
+            <option>
+              Yes
+            </option>
+
+            <option>
+              No
+            </option>
+
+            <option>
+              Maybe
+            </option>
+
+          </select>
+        </div>
+
+        <div class="form-group">
+          <textarea
+            name="prayerRequest"
+            placeholder="Prayer Request"
+          ></textarea>
+        </div>
+
+        <button
+          type="submit"
+          class="submit-btn"
+        >
+          Submit Information
+        </button>
+
+      </form>
 
     </div>
 
   </div>
-<script>
 
-const scriptURL = "https://script.google.com/macros/s/AKfycby_2ZE2QAvET0IisTivTSOlctYFSthi-xSe98Mjjz66hiASaiG5iJWoSbt6cfTe9gZ2/exec";
+  <script>
 
-const form =
-  document.getElementById("visitorForm");
+    const scriptURL =
+      "https://script.google.com/macros/s/AKfycby2aoXLSRc-4AvtxsOXFPs8VNMa8uypIVaox1AYtVoObaWy14m9k1-ew3HOUo1r_js8/exec";
 
-form.addEventListener("submit", async function(e) {
+    const form =
+      document.getElementById(
+        "visitorForm"
+      );
 
-  e.preventDefault();
+    form.addEventListener(
+      "submit",
+      async function(e){
 
-  const button =
-    document.querySelector(".submit-btn");
+        e.preventDefault();
 
-  button.innerText = "Submitting...";
+        const button =
+          document.querySelector(
+            ".submit-btn"
+          );
 
-  const formData = new FormData(form);
+        button.innerText =
+          "Submitting...";
 
-  const data =
-    Object.fromEntries(formData.entries());
+        const formData =
+          new FormData(form);
 
-  try {
+        const data =
+          Object.fromEntries(
+            formData.entries()
+          );
 
-    const response = await fetch(
-      scriptURL + "?sheet=visitor",
-      {
-        method: "POST",
-       const response = await fetch(
-  scriptURL + "?sheet=visitor",
-  {
-    method: "POST",
-    body: JSON.stringify(data)
-  }
-);
+        try {
 
-    const result = await response.json();
+          const response =
+            await fetch(
+              scriptURL,
+              {
+                method: "POST",
+                body:
+                  JSON.stringify(data)
+              }
+            );
 
-    console.log(result);
+          const result =
+            await response.json();
 
-    if(result.success){
+          console.log(result);
 
-      window.location.href =
-        "success.html";
+          if(result.success){
 
-    }
+            window.location.href =
+              "success.html";
 
-    else {
+          }
 
-      alert(result.error);
+          else {
 
-    }
+            alert(
+              "Submission failed"
+            );
 
-  }
+          }
 
-  catch(error){
+        }
 
-    console.error(error);
+        catch(error){
 
-    alert("Submission failed");
+          console.error(error);
 
-  }
+          alert(
+            "Submission failed"
+          );
 
-  button.innerText =
-    "Submit Information";
+        }
 
-});
+        button.innerText =
+          "Submit Information";
 
-</script>
+      }
+    );
+
+  </script>
+
 </body>
+
 </html>
