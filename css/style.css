@@ -219,3 +219,69 @@ textarea{
 .secondary-btn:hover {
   background: rgba(255,255,255,0.12);
 }
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  padding: 18px 24px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  z-index: 1000;
+}
+
+.logo {
+  color: white;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.menu-btn {
+  background: rgba(255,255,255,0.15);
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.dropdown-content {
+  display: none;
+
+  position: absolute;
+  right: 0;
+  top: 55px;
+
+  width: 240px;
+
+  background: white;
+  border-radius: 16px;
+
+  overflow: hidden;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,.15);
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 16px;
+  text-decoration: none;
+  color: #111827;
+}
+
+.dropdown-content a:hover {
+  background: #f3f4f6;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
