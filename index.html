@@ -1,53 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
   <title>Shalom Baptist Evangelism Board</title>
 
-  <link rel="stylesheet" href="css/style.css" />
+  <link
+    rel="stylesheet"
+    href="css/style.css"
+  >
 
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
     rel="stylesheet"
-  />
+  >
+
 </head>
+
 <body>
-<nav class="navbar">
 
-  <div class="dropdown">
+  <!-- Navigation -->
 
-    <button class="menu-btn">
-      ☰ Help
-    </button>
+  <nav class="navbar">
 
-    <div class="dropdown-content">
+    <div class="dropdown">
 
-      <a href="index.html">
-        Home
-      </a>
+      <button
+        class="menu-btn"
+        id="menuBtn"
+      >
+        ☰ Menu
+      </button>
 
-      <a href="visitor.html">
-        First Time Visitor
-      </a>
+      <div
+        class="dropdown-content"
+        id="menuContent"
+      >
 
-      <a href="soul.html">
-        Souls Won
-      </a>
+        <a href="index.html">
+          Home
+        </a>
 
-      <a href="help.html">
-        Help & Support
-      </a>
+        <a href="visitor.html">
+          First Time Visitor
+        </a>
 
-      <a href="strategies.html">
-        Soul Winning Strategies
-      </a>
+        <a href="soul.html">
+          Souls Won
+        </a>
+
+        <a href="help.html">
+          Help & Support
+        </a>
+
+        <a href="strategies.html">
+          Soul Winning Strategies
+        </a>
+
+      </div>
 
     </div>
 
-  </div>
+  </nav>
 
-</nav>
+  <!-- Main Content -->
+
   <div class="container">
 
     <div class="glass-card">
@@ -56,9 +80,13 @@
         Shalom Baptist
       </div>
 
-      <h1>Shalom Baptist Evangelism Board</h1>
-            <h3>Each One- Reach One</h3>
+      <h1>
+        Shalom Baptist Evangelism Board
+      </h1>
 
+      <h3>
+        Each One - Reach One
+      </h3>
 
       <p class="subtitle">
         Welcome. Help us connect with you and support your journey.
@@ -66,12 +94,18 @@
 
       <div class="button-group">
 
-        <a href="visitor.html" class="main-btn">
+        <a
+          href="visitor.html"
+          class="main-btn"
+        >
           First Time Visitor
         </a>
 
-        <a href="soul.html" class="secondary-btn">
-          Soul Won
+        <a
+          href="soul.html"
+          class="secondary-btn"
+        >
+          Souls Won
         </a>
 
       </div>
@@ -80,5 +114,51 @@
 
   </div>
 
+  <!-- Mobile Menu Script -->
+
+  <script>
+
+    const menuBtn =
+      document.getElementById(
+        "menuBtn"
+      );
+
+    const menuContent =
+      document.getElementById(
+        "menuContent"
+      );
+
+    menuBtn.addEventListener(
+      "click",
+      () => {
+
+        menuContent.classList.toggle(
+          "show"
+        );
+
+      }
+    );
+
+    document.addEventListener(
+      "click",
+      (e) => {
+
+        if (
+          !menuBtn.contains(e.target) &&
+          !menuContent.contains(e.target)
+        ) {
+
+          menuContent.classList.remove(
+            "show"
+          );
+
+        }
+
+      }
+    );
+
+  </script>
+
 </body>
+
 </html>
